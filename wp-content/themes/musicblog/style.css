@@ -42,3 +42,19 @@ body#transition-disabled {
 .main-nav ul li a {
 	padding: 15px 20px;
 }
+
+footer {
+	border-top: 2px solid #ffa500;
+	font-size: 0.9rem;
+	margin-top: 20px;
+}
+footer > div {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-gap: 20px;
+	max-width: 1000px;
+	margin: 20px auto;
+}
+footer p, footer a {
+	line-height: 1.6rem;
+}
