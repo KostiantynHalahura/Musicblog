@@ -10,15 +10,8 @@ body {
 	font-size: 18px;
 	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, Arial, Helvetica, sans-serif;
 }
-body#transition-disabled {
-	-webkit-transition: none;
-	-moz-transition: none;
-	-ms-transition: none;
-	-o-transition: none;
-	transition: none;
-}
 
-.main-nav {
+.header {
 	width: 100%;
 	border-top: 2px solid #ffa500;
 	border-bottom: 2px solid #ffa500;
@@ -29,16 +22,13 @@ body#transition-disabled {
 	top: 0;
 	font-size: 1.2rem;
 }
-.main-nav > div {
-	display: flex;
-	justify-content: space-between;
-}
-.main-nav ul {
+.header ul {
 	margin-top: 15px;
+	list-style: none;
 }
-.main-nav ul li {
+.header ul li {
 	display: inline-block;
 }
-.main-nav ul li a {
+.header ul li a {
 	padding: 15px 20px;
 }

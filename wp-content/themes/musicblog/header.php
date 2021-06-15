@@ -7,15 +7,7 @@
 	<?php wp_head(); ?>
 </head>
 <body>
-	<header class="main-nav">
-		<div>
-			<ul>
-				<li><a href="#">Главная</a></li>
-				<li><a href="#">О нас</a></li>
-				<li><a href="#">Статьи</a></li>
-				<li><a href="#">Обратная связь</a></li>
-			</ul>
-		</div>
+	<header id="header" class="header">
+		<?php wp_nav_menu() ?>
 	</header>
-
 <div id="content" class="site-content">
