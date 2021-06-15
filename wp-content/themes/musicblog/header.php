@@ -8,6 +8,6 @@
 </head>
 <body>
 	<header id="header" class="header">
-		<?php wp_nav_menu() ?>
+		<?php wp_nav_menu(array( 'theme_location' => 'header-menu', 'menu_class' => 'link-list last-child' )) ?>
 	</header>
 <div id="content" class="site-content">
