@@ -1,4 +1,7 @@
 <?php
+	//Styles
+	wp_enqueue_style ('main-style', get_template_directory_uri(). '/resources/css/main-style.css');
+
 	//Update switching off
 	
 	add_filter( 'auto_update_core', '__return_false' );
