@@ -60,32 +60,37 @@
 
 	//Metaboxes
 	
-	function k_meta_box() {
-		add_meta_box('settings', 'Настройки', 'k_meta_box_html', 'band', 'normal', 'high');
-	}
+	function band_custom_box(){
+		add_meta_box( 'band_form', 'Дополнительно', 'band_custom_box_html', 'band');
+}
+	add_action('add_meta_boxes', 'band_custom_box');
 
-	add_action( 'admin_menu', 'k_meta_box' );
-	
-	function k_meta_box_html( $post ) {
-		$value = get_post_meta( $post->ID, '_wporg_meta_key', true );
-		?>
-		<label for="wporg_field">Description for this field</label>
-		<select name="wporg_field" id="wporg_field" class="postbox">
-			<option value="">Select something...</option>
-			<option value="something" <?php selected( $value, 'something' ); ?>>Something</option>
-			<option value="else" <?php selected( $value, 'else' ); ?>>Else</option>
-		</select>
-		<?php
-	}
-	
-	function wporg_save_postdata( $post_id ) {
-		if ( array_key_exists( 'wporg_field', $_POST ) ) {
-			update_post_meta(
-				$post_id,
-				'_wporg_meta_key',
-				$_POST['wporg_field']
-			);
+	function band_custom_box_html( $post ){
+		wp_nonce_field( basename(__FILE__), 'band_noncename' );
+
+	$year = get_post_meta( $post->ID, 'year', 1 );
+
+	echo '<label for="year_field">' . __("Год создания", 'band_custom_box_textdomain' ) . '</label> ';
+	echo '<input type="number" id="year_field" name="year_field" value="'. $year .'" size="25" />';
+}
+
+	add_action( 'save_post', 'band_custom_box_save' );
+	function band_custom_box_save( $post_id ) {
+		if ( ! isset( $_POST['year_field'] ) ) {
+			return;
 		}
-	}
-	add_action( 'save_post', 'wporg_save_postdata' );
+		if ( ! wp_verify_nonce( $_POST['band_noncename'], basename(__FILE__) ) ) {
+			return;
+		}
+		if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) {
+			return;
+		}
+		if( ! current_user_can( 'edit_post', $post_id ) ) {
+			return;
+		}
+
+		$year_field = sanitize_text_field( $_POST['year_field'] );
+
+		update_post_meta( $post_id, 'year', $year_field );
+}
 ?>

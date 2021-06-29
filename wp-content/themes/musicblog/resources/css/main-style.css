@@ -63,3 +63,7 @@ figcaption > p {
 	font-weight: bold;
 	margin-left: 7px;
 }
+
+.band-year {
+	font-weight: bold;
+}
