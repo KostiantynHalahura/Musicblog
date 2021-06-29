@@ -9,7 +9,7 @@
 		<blockquote cite="">
 			<span><?php the_title(); ?></span>
 		</blockquote>
-		<figcaption>—<?php the_content(); ?></figcaption>
+		<figcaption>— <span class="quote-author"><?php echo get_post_meta( get_the_id(), 'author', true ); ?></span></figcaption>
 	</figure>
 <?php
 		endwhile;
