@@ -56,10 +56,10 @@
 		)
 	);
 }
+	add_action( 'init', 'k_create_post_type_quote' );
 
 	//Metaboxes
 	
-	add_action( 'init', 'k_create_post_type_quote' );
 	function k_meta_box() {
 		add_meta_box('settings', 'Настройки', 'k_meta_box_html', 'band', 'normal', 'high');
 	}
