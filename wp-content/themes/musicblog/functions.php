@@ -9,23 +9,10 @@
 	}
 	add_action( 'init', 'register_my_menus' );
 
-	function k_create_post_type_band() {
-		register_post_type( 'band',
-		array(
-			'labels' => array(
-				'name' => __( 'Bands' ),
-				'singular_name' => __( 'Band' ),
-			),
-			'public' => true,
-			'has_archive' => true,
-			'rewrite' => array('slug' => 'bands'),
-			'menu_position' => 4,
-			'supports' => array( 'title', 'editor', 'thumbnail', 'post_formats' ),
-		)
-	);
-}
-	add_action( 'init', 'k_create_post_type_band' );
-
+	include 'core/base-post-type.php';
+	include 'app/post-types/band.php';
+	new Band();
+	
 	function k_create_post_type_quote() {
 		register_post_type( 'quote',
 		array(
