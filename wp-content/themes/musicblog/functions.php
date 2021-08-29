@@ -1,6 +1,9 @@
 <?php
 //Styles
+function mytheme_enqueue_style() {
 wp_enqueue_style( 'main-style', get_template_directory_uri() . '/resources/css/main-style.css' );
+}
+add_action( 'wp_enqueue_scripts', 'mytheme_enqueue_style' );
 
 //Update switching off
 
@@ -20,7 +23,6 @@ function register_my_menus() {
 		]
 	);
 }
-
 add_action( 'init', 'register_my_menus' );
 
 //include 'core/base-post-type.php';
@@ -42,7 +44,6 @@ function k_create_post_type_band() {
 		]
 	);
 }
-
 add_action( 'init', 'k_create_post_type_band' );
 
 function k_create_post_type_quote() {
@@ -60,7 +61,6 @@ function k_create_post_type_quote() {
 		]
 	);
 }
-
 add_action( 'init', 'k_create_post_type_quote' );
 
 function k_create_post_type_launch() {
@@ -78,7 +78,6 @@ function k_create_post_type_launch() {
 		]
 	);
 }
-
 add_action( 'init', 'k_create_post_type_launch' );
 
 //SpaceX API
@@ -136,7 +135,6 @@ function get_launches_from_api() {
 		],
 	] );
 }
-
 add_action( 'wp_ajax_nopriv_get_launches_from_api', 'get_launches_from_api' );
 add_action( 'wp_ajax_get_launches_from_api', 'get_launches_from_api' );
 
@@ -146,7 +144,6 @@ add_action( 'wp_ajax_get_launches_from_api', 'get_launches_from_api' );
 function band_custom_box() {
 	add_meta_box( 'band_form', 'Дополнительно', 'band_custom_box_html', 'band' );
 }
-
 add_action( 'add_meta_boxes', 'band_custom_box' );
 
 function band_custom_box_html( $post ) {
@@ -176,14 +173,12 @@ function band_custom_box_save( $post_id ) {
 
 	update_post_meta( $post_id, 'year', $year_field );
 }
-
 add_action( 'save_post', 'band_custom_box_save' );
 
 //Quote
 function quote_custom_box() {
 	add_meta_box( 'quote_form', 'Дополнительно', 'quote_custom_box_html', 'quote' );
 }
-
 add_action( 'add_meta_boxes', 'quote_custom_box' );
 
 function quote_custom_box_html( $post ) {
@@ -195,7 +190,6 @@ function quote_custom_box_html( $post ) {
 	echo '<input type="text" id="author_field" name="author_field" value="' . $author . '" size="25" />';
 }
 
-add_action( 'save_post', 'quote_custom_box_save' );
 function quote_custom_box_save( $post_id ) {
 	if ( ! isset( $_POST['author_field'] ) ) {
 		return;
@@ -214,3 +208,4 @@ function quote_custom_box_save( $post_id ) {
 
 	update_post_meta( $post_id, 'author', $author_field );
 }
+add_action( 'save_post', 'quote_custom_box_save' );
