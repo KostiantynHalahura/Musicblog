@@ -1,18 +1,16 @@
 <?php
 
-class Band extends BasePostType {
-	protected $name = "band";
-
+class Launch extends BasePostType {
+	protected $name = "launch";
 	protected $args = [
 		'labels'        => [
-			'name'          => 'Bands',
-			'singular_name' => 'Band',
+			'name'          => 'Launches',
+			'singular_name' => 'Launch',
 		],
 		'public'        => TRUE,
 		'has_archive'   => TRUE,
-		'rewrite'       => [ 'slug' => 'bands' ],
+		'rewrite'       => [ 'slug' => 'launches' ],
 		'menu_position' => 4,
 		'supports'      => [ 'title', 'editor', 'thumbnail', 'post_formats' ],
 	];
 }
-?>

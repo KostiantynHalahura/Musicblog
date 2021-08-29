@@ -25,60 +25,35 @@ function register_my_menus() {
 }
 add_action( 'init', 'register_my_menus' );
 
-//include 'core/base-post-type.php';
-//include 'app/post-types/band.php';
-//new Band();
+//Custom post types
 
-function k_create_post_type_band() {
-	register_post_type( 'band',
-		[
-			'labels'        => [
-				'name'          => __( 'Bands' ),
-				'singular_name' => __( 'Band' ),
-			],
-			'public'        => TRUE,
-			'has_archive'   => TRUE,
-			'rewrite'       => [ 'slug' => 'bands' ],
-			'menu_position' => 4,
-			'supports'      => [ 'title', 'editor', 'thumbnail', 'post_formats' ],
-		]
-	);
-}
-add_action( 'init', 'k_create_post_type_band' );
+include 'core/base-post-type.php';
 
-function k_create_post_type_quote() {
-	register_post_type( 'quote',
-		[
-			'labels'        => [
-				'name'          => __( 'Quotes' ),
-				'singular_name' => __( 'Quote' ),
-			],
-			'public'        => TRUE,
-			'has_archive'   => TRUE,
-			'rewrite'       => [ 'slug' => 'quotes' ],
-			'menu_position' => 4,
-			'supports'      => [ 'title', 'editor', 'post_formats' ],
-		]
-	);
-}
-add_action( 'init', 'k_create_post_type_quote' );
+include 'app/post-types/Band.php';
+new Band();
 
-function k_create_post_type_launch() {
-	register_post_type( 'launch',
-		[
-			'labels'        => [
-				'name'          => __( 'Launches' ),
-				'singular_name' => __( 'Launch' ),
-			],
-			'public'        => TRUE,
-			'has_archive'   => TRUE,
-			'rewrite'       => [ 'slug' => 'launch' ],
-			'menu_position' => 5,
-			'supports'      => [ 'title', 'editor', 'thumbnail' ],
-		]
-	);
-}
-add_action( 'init', 'k_create_post_type_launch' );
+include 'app/post-types/Quote.php';
+new Quote();
+
+include 'app/post-types/Launch.php';
+new Launch();
+
+//function k_create_post_type_launch() {
+//	register_post_type( 'launch',
+//		[
+//			'labels'        => [
+//				'name'          => __( 'Launches' ),
+//				'singular_name' => __( 'Launch' ),
+//			],
+//			'public'        => TRUE,
+//			'has_archive'   => TRUE,
+//			'rewrite'       => [ 'slug' => 'launch' ],
+//			'menu_position' => 5,
+//			'supports'      => [ 'title', 'editor', 'thumbnail' ],
+//		]
+//	);
+//}
+//add_action( 'init', 'k_create_post_type_launch' );
 
 //SpaceX API
 // Launches
