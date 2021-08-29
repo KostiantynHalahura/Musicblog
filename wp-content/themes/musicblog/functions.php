@@ -60,8 +60,25 @@
 }
 	add_action( 'init', 'k_create_post_type_quote' );
 
+	function k_create_post_type_launch() {
+		register_post_type( 'launch',
+			array(
+			        'labels' => array(
+							'name' => __( 'Launches' ),
+							'singular_name' => __( 'Launch' ),
+					),
+					'public' => true,
+					'has_archive' => true,
+					'rewrite' => array('slug' => 'launch'),
+					'menu_position' => 5,
+					'supports' => array( 'title', 'editor', 'thumbnail' ),
+			)
+	);
+}
+	add_action( 'init', 'k_create_post_type_launch' );
+
 	//Metaboxes
-	
+
 	//Band
 	function band_custom_box() {
 		add_meta_box( 'band_form', 'Дополнительно', 'band_custom_box_html', 'band');
@@ -131,4 +148,3 @@
 	
 		update_post_meta( $post_id, 'author', $author_field );
 }
-?>
